@@ -4,6 +4,8 @@ const overviewDiv = document.querySelector(".overview");
 const username = "AlPoliakow";
 //unordered list for repos
 const repoList = document.querySelector(".repo-list");
+const repoSection = document.querySelector(".repos");
+const repoDataSection = document.querySelector(".repo-data");
 const filterRepos = document.querySelector("#filter-repos");
 
 //function to fetch user data from GitHub
@@ -52,3 +54,42 @@ const displayRepoData = function(repos){
     repoList.append(repoInfo);
   }
 };
+
+repoList.addEventListener("click", function (e){
+  if (e.target.matches("h3")){
+    const repoName = e.target.innerText; //to prevent calling a variable from a different function
+    getRepoInfo(repoName);
+  }
+  });
+
+const getRepoInfo = async function (repoName){
+  const fetchRepoInfo = await fetch(`https://api.github.com/repos/${username}/${repoName}`); 
+  const repoSpecificInfo = await fetchRepoInfo.json();
+  console.log(repoSpecificInfo)
+  //fetch languages
+  const fetchLanguages = await fetch(repoSpecificInfo.languages_url); 
+  console.log(fetchLanguages);
+  const languageData = await fetchLanguages.json();
+  console.log(languageData);
+  
+  const languages = [];
+  for(const language in languageData){
+    languages.push(language);
+  }
+  console.log(languages);
+  displayRepoSpecificInfo(repoSpecificInfo, languages);
+};
+
+const displayRepoSpecificInfo = function (repoSpecificInfo, languages){
+  repoDataSection.innerHTML="";
+  repoDataSection.classList.remove("hide");
+  const repoDiv = document.createElement("div");
+    repoDiv.innerHTML = `<h3>Name: ${repoSpecificInfo.name}</h3>
+    <p>Description: ${repoSpecificInfo.description}</p>
+    <p>Default Branch: ${repoSpecificInfo.default_branch}</p>
+    <p>Languages: ${languages.join(", ")}</p>
+    <a class="visit" href="${`https://www.github.com/${username}/${repoSpecificInfo.name}`}" target="_blank" rel="noreferrer noopener">View Repo on GitHub!</a>`;
+    repoDataSection.append(repoDiv);
+   repoSection.classList.add("hide");
+  };
+
