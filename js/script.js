@@ -2,8 +2,12 @@
 const overviewDiv = document.querySelector(".overview");
 //GitHub name
 const username = "AlPoliakow";
+//unordered list for repos
+const repoList = document.querySelector(".repo-list");
+const filterRepos = document.querySelector("#filter-repos");
+
 // create an async function to fetch information from GitHub
-const getGitHubData = async function (){
+const getUserData = async function (){
     const request = await fetch(`https://api.github.com/users/${username}`);
     //resolve JSON response
     const data = await request.json();
@@ -12,7 +16,8 @@ const getGitHubData = async function (){
     displayUserInformation(data);
 };
 
-getGitHubData();
+getUserData();
+
 
 //function to display the fetched user information; should accept the JSON data as a parameter
 const displayUserInformation = function (data){
@@ -31,4 +36,30 @@ const displayUserInformation = function (data){
     </div>`;
     //append the div to the Overview div
     overviewDiv.append(userInfo); // no quotation marks
+    getRepoData(username);
+};
+
+//async function to fetch repos 
+const getRepoData = async function (username) {
+  //add end point
+  const fetchRepos = await fetch(`https://api.github.com/users/${username}/repos?sort=updated&per_page=100`); //public_repos
+  //resolve JSON response
+  const repoData = await fetchRepos.json();
+  //log out the response to the console
+  console.log(repoData);
+  //displayUserInformation(data);
+  displayRepoData(repoData);
+};
+
+//getRepoData(username);
+
+const displayRepoData = function(repos){ //can use the term "repos" from the fetched data
+  //filterRepos.classList.remove("hide");
+  for (const repo of repos){
+    const repoInfo = document.createElement("li");
+    repoInfo.classList.add("repo");
+    repoInfo.innerHTML=`<h3>${repo.name}</h3>`;
+    repoList.append(repoInfo);
+    //console.log(repo);
+  }
 };
