@@ -71,8 +71,9 @@ const getRepoInfo = async function (repoName){
   console.log(fetchLanguages);
   const languageData = await fetchLanguages.json();
   console.log(languageData);
-  
+  //add language to empty array
   const languages = [];
+  // add each language to the array
   for(const language in languageData){
     languages.push(language);
   }
@@ -81,8 +82,10 @@ const getRepoInfo = async function (repoName){
 };
 
 const displayRepoSpecificInfo = function (repoSpecificInfo, languages){
+  //clear and show the section
   repoDataSection.innerHTML="";
   repoDataSection.classList.remove("hide");
+  //create div with copied sections
   const repoDiv = document.createElement("div");
     repoDiv.innerHTML = `<h3>Name: ${repoSpecificInfo.name}</h3>
     <p>Description: ${repoSpecificInfo.description}</p>
@@ -90,6 +93,7 @@ const displayRepoSpecificInfo = function (repoSpecificInfo, languages){
     <p>Languages: ${languages.join(", ")}</p>
     <a class="visit" href="${`https://www.github.com/${username}/${repoSpecificInfo.name}`}" target="_blank" rel="noreferrer noopener">View Repo on GitHub!</a>`;
     repoDataSection.append(repoDiv);
+    //hide the ".repos" section
    repoSection.classList.add("hide");
   };
 
