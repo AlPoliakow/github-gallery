@@ -6,7 +6,8 @@ const username = "AlPoliakow";
 const repoList = document.querySelector(".repo-list");
 const repoSection = document.querySelector(".repos");
 const repoDataSection = document.querySelector(".repo-data");
-const filterRepos = document.querySelector("#filter-repos");
+const viewReposButton = document.querySelector(".view-repos");
+const filterInput = document.querySelector("#filter-repos");
 
 //function to fetch user data from GitHub
 const getUserData = async function (){
@@ -47,6 +48,7 @@ const getRepoData = async function (username) {
 
 // display the fetched repo data
 const displayRepoData = function(repos){ 
+  filterInput.classList.remove("hide");
   for (const repo of repos){
     const repoInfo = document.createElement("li");
     repoInfo.classList.add("repo");
@@ -97,5 +99,35 @@ const displayRepoSpecificInfo = function (repoSpecificInfo, languages){
   
     repoDataSection.append(repoDiv);
    repoSection.classList.add("hide");
+   //show the view-repos button
+   viewReposButton.classList.remove("hide");
   };
 
+  viewReposButton.addEventListener("click", function (){
+    repoSection.classList.remove("hide");
+    repoDataSection.classList.add("hide");
+    viewReposButton.classList.add("hide");
+  });
+
+  filterInput.addEventListener("input",function(e){
+    //select entered text
+    const inputText= e.target.value;
+    // log it in the console
+    console.log(inputText);
+    //select all elements with the class of repo
+    const repos = document.querySelectorAll(".repo");
+    //convert input to lower case
+    const lowerCaseInput = inputText.toLowerCase();
+    // loop each repo through repo element
+    for (const repo of repos){
+      const repoLowerText = repo.innerText.toLowerCase();
+      //Check to see if the lowercase repo text includes the lowercase search text.
+      if (repoLowerText.includes(lowerCaseInput)){
+        // If the repo contains the text, show it.
+        repo.classList.remove("hide");
+      } else {
+        //If it doesn’t contain the text, hide the repo.
+        repo.classList.add("hide");
+      }
+    }
+  });
