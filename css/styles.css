@@ -11,6 +11,10 @@ body {
     background-color: #fbf9de;
     color: #333;
     font-size: 16px;
+    background-color: #faf4a7;
+    background-image: url("../img/bg.png");
+    background-size: 800px;
+    background-repeat: repeat;
 }
 
 .hide {
@@ -52,7 +56,7 @@ h1 {
 .badge {
     height: 80px;
     width: 50px;
-    background-color: grey;
+    background-color: black;
     z-index: 98;
     margin-bottom: -35px;
     margin-top: 10px;
@@ -80,7 +84,7 @@ h1 {
 h3 {
     width: 100%;
     text-align: center;
-    color: #f86d58;
+    color: rgb(72, 72, 72);
 }
 
 ul {
@@ -151,6 +155,8 @@ section.repo-data {
     background-color: #fff;
     padding: 2em;
     padding-bottom: 1em;
+    border-left: #483978 2px solid;
+    border-right: #483978 2px solid;
 }
 
 .repos {
@@ -158,6 +164,8 @@ section.repo-data {
     flex-wrap: wrap;
     justify-content: center;
     background-color: #fff;
+    border-left: #483978 2px solid;
+    border-right: #483978 2px solid;
     margin-top: 0;
     padding: 2em;
 }
@@ -173,7 +181,8 @@ section.repo-data {
 .repo-list li {
     width: 90%;
     margin: 1em 0;
-    border: 1px solid #f86d58;
+    border: 1px solid black;
+    color: black;
     padding: 0.5em;
 }
 
@@ -181,6 +190,7 @@ section.repo-data {
     text-align: left;
     margin: 0;
     padding: 10px;
+    color: rgb(72, 72, 72);
 }
 
 .repo-list h3:hover {
@@ -223,6 +233,8 @@ section.repo-data {
     background-color: #fff;
     padding-left: 2em;
     padding-bottom: 2em;
+    border-left: #483978 2px solid;
+    border-right: #483978 2px solid;
 }
 
 .view-repos {
