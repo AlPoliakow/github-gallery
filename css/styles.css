@@ -152,6 +152,10 @@ ul {
     border-radius: 0.25em;
 }
 
+::placeholder{
+font-weight: 600;
+}
+
 section.repo-data {
     background-color: #fff;
     padding: 2em;
