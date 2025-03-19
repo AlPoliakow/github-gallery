@@ -95,7 +95,7 @@ const displayRepoSpecificInfo = function (repoSpecificInfo, languages) {
     <p>Description: ${repoSpecificInfo.description}</p>
     <p>Default Branch: ${repoSpecificInfo.default_branch}</p>
     <p>Languages: ${languages.join(", ")}</p>
-    <a class="visit" href="${`https://www.github.com/${username}/${repoSpecificInfo.name}`}" target="_blank" rel="noreferrer noopener">View Repo on GitHub!</a>`;
+    <a class="visit" href="${`https://www.github.com/${username}/${repoSpecificInfo.name}`}" target="_blank" rel="noreferrer noopener">View Repo on GitHub</a>`;
 
   repoDataSection.append(repoDiv);
   repoSection.classList.add("hide");
