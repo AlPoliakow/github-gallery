@@ -31,7 +31,7 @@ body {
 }
 
 .fa-github-alt {
-    color: #f86d58;
+    color: #f8f3b6; /* to match background */
 }
 
 img {
@@ -148,7 +148,8 @@ ul {
     margin-top: 1em;
     padding: 1em;
     margin-bottom: 1em;
-    border: 2px solid  #f86d58;
+    outline: 5px solid #f8f3b6;
+    border: 2px solid #000000;
     border-radius: 0.25em;
 }
 
