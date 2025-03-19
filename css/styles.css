@@ -187,21 +187,22 @@ section.repo-data {
 .repo-list li {
     width: 90%;
     margin: 1em 0;
-    border: 1px solid black;
     color: black;
-    padding: 0.5em;
-    border-radius: 0.5em;
 }
 
-.repo-list h3 {
+.repo-list .repo-name{
     text-align: left;
     margin: 0;
     padding: 10px;
-    color: rgb(72, 72, 72);
+    border: 1px solid black;
+    color: rgb(0, 0, 0);
+    border-radius: 0.5em;
+    width: 100%;
 }
 
-.repo-list h3:hover {
+.repo-list button:hover {
     background-color: #eee9ff;
+    outline: 1px solid black;
     cursor: pointer;
 }
 
@@ -228,6 +229,7 @@ section.repo-data {
     display: block;
     background-color: #483978;
     border: 1px solid #483978;
+    border-radius: 0.5em;
 }
 
 .repo-data .visit:hover {
@@ -247,6 +249,7 @@ section.repo-data {
 .view-repos {
     max-width: 200px;
     margin-top: 0;
+    border-radius: 0.5em;
 }
 
 @media (min-width: 700px) {
