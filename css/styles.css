@@ -244,12 +244,14 @@ section.repo-data {
     padding-bottom: 2em;
     border-left: #483978 2px solid;
     border-right: #483978 2px solid;
+    padding-bottom: 100%;
 }
 
 .view-repos {
     max-width: 200px;
     margin-top: 0;
     border-radius: 0.5em;
+    border: 1px solid #000000;
 }
 
 @media (min-width: 700px) {
